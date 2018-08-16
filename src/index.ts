@@ -52,6 +52,7 @@ function addPopup(evt: ol.MapBrowserEvent, map: ol.Map, options?: { innerHTML: s
     };
 
     var overlay = new Overlay(<any>overlayoptions);
+    overlay.set('type', 'popup');
     overlay.setPosition(evt.coordinate);
     let closeFunction = () => {
         closer.removeEventListener('click', closeFunction, false)
@@ -60,6 +61,14 @@ function addPopup(evt: ol.MapBrowserEvent, map: ol.Map, options?: { innerHTML: s
     closer.addEventListener('click', closeFunction, false);
 
     map.addOverlay(overlay);
+}
+
+function removeAllPopups() {
+    map.getOverlays().getArray().slice(0).forEach((overlay) => {
+        if (overlay.get('type') === 'popup') {
+            map.removeOverlay(overlay);
+        }
+    });
 }
 
 /**
@@ -71,3 +80,5 @@ function mapOnClick(evt: any) {
     });
 }
 map.on('singleclick', mapOnClick);
+
+map.on('dblclick', removeAllPopups);

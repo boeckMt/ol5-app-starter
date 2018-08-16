@@ -1,0 +1,25 @@
+{
+  "name": "planetaredatentest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel serve src/index.html",
+    "build": "cross-env NODE_ENV=production parcel build src/index.html --public-url .",
+    "watch": "parcel watch src/index.html",
+    "predeploy": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/ol": "^4.6.2",
+    "@types/openlayers": "^4.6.10",
+    "ol": "^5.1.3"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "http-server": "^0.11.1",
+    "parcel-bundler": "^1.9.7",
+    "typescript": "^3.0.1"
+  }
+}
